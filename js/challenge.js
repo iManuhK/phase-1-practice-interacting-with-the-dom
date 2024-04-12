@@ -1,18 +1,26 @@
 document.addEventListener('DOMContentLoaded', (e)=>{
-       let intervalID = setInterval(startCount, 1000)
+       let timer = setInterval(startCount, 1000)
         let counter = document.getElementById("counter")
 function startCount(){
-    counter.innerHTML = `\n ${intervalID}\n`
-    intervalID++
-    }
+    counter.innerHTML = `\n ${timer}\n`
+    timer++
+}
+function pauseTimer(){
+    let pauseBtn = document.getElementById("pause")
+    pauseBtn.addEventListener('click', (e)=>{
+        let currentTime = document.getElementById('counter')
+        clearInterval()
+        })
+}
+
 function IncDecrManually () {
 let decrementer = document.getElementById("minus")
 decrementer.addEventListener('click',()=>{
-counter.innerHTML = intervalID--
+counter.innerHTML = timer--
     })
 let Incrementer = document.getElementById("plus")
 Incrementer.addEventListener('click',()=>{
-    counter.innerHTML = intervalID++
+    counter.innerHTML = timer++
     })
 }
 IncDecrManually()
@@ -25,25 +33,7 @@ document.getElementsByClassName('likes')[0].appendChild(messageLine)
     })
 
 }
-function pauseUnpause(){
-    let pauseBtn = document.getElementById("pause")
-    pauseBtn.addEventListener('click', (e)=>{
-        let allBtns = document.querySelectorAll('button')
-        for(let button of allBtns){
-            if (pauseBtn.innerHTML==='pause'){
-                button.setAttribute('disabled', true)
-                pauseBtn.innerHTML = 'Resume'
-            }
-            // if (pauseBtn.innerText === 'Resume'){
-            
-            //     pauseBtn.innerHTML = 'pause'
-            // }
-            }
 
-        })
-    
-}
-pauseUnpause()
 function Addcomments(){
     
     const form = document.getElementById("comment-form")
@@ -57,6 +47,6 @@ function Addcomments(){
     })
 }
 Addcomments()
-pauseUnpause()
+pauseTimer()
 LikingCounter()
 })
