@@ -1,26 +1,18 @@
 document.addEventListener('DOMContentLoaded', (e)=>{
-       let timer = setInterval(startCount, 1000)
+       let intervalID = setInterval(startCount, 1000)
         let counter = document.getElementById("counter")
 function startCount(){
-    counter.innerHTML = `\n ${timer}\n`
-    timer++
-}
-function pauseTimer(){
-    let pauseBtn = document.getElementById("pause")
-    pauseBtn.addEventListener('click', (e)=>{
-        let currentTime = document.getElementById('counter')
-        clearInterval()
-        })
-}
-
+    counter.innerHTML = `\n ${intervalID}\n`
+    intervalID++
+    }
 function IncDecrManually () {
 let decrementer = document.getElementById("minus")
 decrementer.addEventListener('click',()=>{
-counter.innerHTML = timer--
+counter.innerHTML = intervalID--
     })
 let Incrementer = document.getElementById("plus")
 Incrementer.addEventListener('click',()=>{
-    counter.innerHTML = timer++
+    counter.innerHTML = intervalID++
     })
 }
 IncDecrManually()
@@ -33,7 +25,14 @@ document.getElementsByClassName('likes')[0].appendChild(messageLine)
     })
 
 }
-
+function pauseUnpause(){
+    let pauseBtn = document.getElementById("pause")
+    pauseBtn.addEventListener('click', (e)=>{
+        let currentTime = document.getElementById('counter')
+        })
+    
+}
+pauseUnpause()
 function Addcomments(){
     
     const form = document.getElementById("comment-form")
@@ -47,6 +46,6 @@ function Addcomments(){
     })
 }
 Addcomments()
-pauseTimer()
+pauseUnpause()
 LikingCounter()
 })
